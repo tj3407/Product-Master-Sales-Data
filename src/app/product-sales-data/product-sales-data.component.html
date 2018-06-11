@@ -1,0 +1,28 @@
+<button class='btn btn-success' [routerLink]='["/"]'>Master Data</button>
+<button class='btn btn-warning' [routerLink]='["/new"]'>Create Product</button>
+<section>
+  <h3>Sales Data for <span class='red'>{{ album?.Title }}</span> by <span class='red'>{{ album?.ArtistName }}</span> </h3>
+  <table class='table table-striped'>
+    <thead>
+      <tr>
+        <td>Product ID</td>
+        <td>Sales Quantity</td>
+        <td>Sales Revenue</td>
+        <td>Unit Price</td>
+        <td>Action</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ record?.ProductId }}</td>
+        <td>{{ record?.SaleQty | number }}</td>
+        <td>{{ record?.SalesRev | currency:'USD':true }}</td>
+        <td>{{ record?.UnitPrice | currency:'USD':true }}</td>
+        <td>
+          <button class='btn btn-danger' (click)='onDelete(record._id)'>Delete</button>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+</section>

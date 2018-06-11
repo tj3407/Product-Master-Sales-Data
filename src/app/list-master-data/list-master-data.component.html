@@ -1,0 +1,30 @@
+<button class='btn btn-success' [routerLink]='["/"]'>Master Data</button>
+<button class='btn btn-warning' [routerLink]='["/new"]'>Create Product</button>
+<section>
+  <h3>Records</h3>
+  <table class='table table-striped'>
+    <thead>
+      <tr>
+        <td>Product ID</td>
+        <td>UPC</td>
+        <td>Title</td>
+        <td>Artist Name</td>
+        <td>Release Date</td>
+        <td>Action</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let record of records'>
+        <td>{{ record?.ProductId }}</td>
+        <td>{{ record?.UPC }}</td>
+        <td><a [routerLink]='["/show", record?.ProductId]'>{{ record?.Title }}</a></td>
+        <td>{{ record?.ArtistName }}</td>
+        <td>{{ record?.RelDate | date:'shortDate' }}</td>
+        <td>
+          <button class='btn btn-danger' (click)='onDelete(record._id)'>Delete</button>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+</section>

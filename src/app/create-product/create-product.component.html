@@ -1,0 +1,168 @@
+<button class='btn btn-success' [routerLink]='["/"]'>Master Data</button>
+<button class='btn btn-warning' [routerLink]='["/new"]'>Create Product</button>
+<section>
+  <h3>Create New Product</h3>
+  <fieldset>
+    <div class='container'>
+      <form (submit)="recordForm.valid && onSubmit($event, recordForm)" #recordForm='ngForm'>
+        <div class="form-group row">
+          <label class="control-label col-sm-2">Product ID</label>
+          <div class="col-sm-6">
+            <input class="form-control" type="text"
+              name="newMaster.ProductId"
+              required
+              minlength='3'
+              [(ngModel)]='newMaster.ProductId'
+              [(ngModel)]='newSales.ProductId'
+              #ProductId="ngModel">
+          </div>
+        </div>
+        <div class="purple" *ngIf='(ProductId.touched) && ProductId.errors'>
+          <div class="purple" *ngIf='ProductId.errors.required'>
+            Record must have a Product ID!
+          </div>
+          <div class="purple" *ngIf='ProductId.errors.minlength'>
+            Record must contain at least three characters!
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="control-label col-sm-2">UPC</label>
+          <div class="col-sm-6">
+            <input class="form-control" type="text"
+              name="newMaster.UPC"
+              required
+              minlength='3'
+              [(ngModel)]='newMaster.UPC'
+              #UPC="ngModel">
+          </div>
+        </div>
+        <div class="purple" *ngIf='(UPC.touched) && UPC.errors'>
+          <div class="purple" *ngIf='UPC.errors.required'>
+            UPC must not be empty!
+          </div>
+          <div class="purple" *ngIf='UPC.errors.minlength'>
+            UPC must contain at least three characters!
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="control-label col-sm-2">Title</label>
+          <div class="col-sm-6">
+            <input class="form-control" type="text"
+              name="newMaster.Title"
+              required
+              minlength='3'
+              [(ngModel)]='newMaster.Title'
+              #Title="ngModel">
+          </div>
+        </div>
+        <div class="purple" *ngIf='(Title.touched) && Title.errors'>
+          <div class="purple" *ngIf='Title.errors.required'>
+            Title must not be empty!
+          </div>
+          <div class="purple" *ngIf='Title.errors.minlength'>
+              Title must contain at least three characters!
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="control-label col-sm-2">Artist Name</label>
+          <div class="col-sm-6">
+            <input class="form-control" type="text"
+              name="newMaster.ArtistName"
+              required
+              minlength='3'
+              [(ngModel)]='newMaster.ArtistName'
+              #ArtistName="ngModel">
+          </div>
+        </div>
+        <div class="purple" *ngIf='(ArtistName.touched) && ArtistName.errors'>
+          <div class="purple" *ngIf='ArtistName.errors.required'>
+            ArtistName must not be empty!
+          </div>
+          <div class="purple" *ngIf='ArtistName.errors.minlength'>
+            ArtistName must contain at least three characters!
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="control-label col-sm-2">Release Date</label>
+          <div class="col-sm-6">
+            <input class="form-control" type="date"
+              name="newMaster.RelDate"
+              required
+              minlength='3'
+              [(ngModel)]='newMaster.RelDate'
+              #RelDate="ngModel">
+          </div>
+        </div>
+        <div class="purple" *ngIf='(RelDate.touched) && RelDate.errors'>
+          <div class="purple" *ngIf='RelDate.errors.required'>
+            Release Date must not be empty!
+          </div>
+          <div class="purple" *ngIf='RelDate.errors.minlength'>
+            Release Date type must contain at least three characters!
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="control-label col-sm-2">Sale Quantity</label>
+          <div class="col-sm-6">
+            <input class="form-control" type="text"
+              name="newSales.SaleQty"
+              required
+              [(ngModel)]='newSales.SaleQty'
+              #SaleQty="ngModel">
+          </div>
+        </div>
+        <div class="purple" *ngIf='(SaleQty.touched) && SaleQty.errors'>
+          <div class="purple" *ngIf='SaleQty.errors.required'>
+            Sale Quantity must not be empty!
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="control-label col-sm-2">Sales Revenue</label>
+          <div class="col-sm-6">
+            <input class="form-control" type="text"
+              name="newSales.SalesRev"
+              required
+              [(ngModel)]='newSales.SalesRev'
+              #SalesRev="ngModel">
+          </div>
+        </div>
+        <div class="purple" *ngIf='(SalesRev.touched) && SalesRev.errors'>
+          <div class="purple" *ngIf='SalesRev.errors.required'>
+            Sales Revenue must not be empty!
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="control-label col-sm-2">Unit Price</label>
+          <div class="col-sm-6">
+            <input class="form-control" type="text"
+              name="newSales.UnitPrice"
+              required
+              [(ngModel)]='newSales.UnitPrice'
+              #UnitPrice="ngModel">
+          </div>
+        </div>
+        <div class="purple" *ngIf='(UnitPrice.touched) && UnitPrice.errors'>
+          <div class="purple" *ngIf='UnitPrice.errors.required'>
+            Unit Price must not be empty!
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="control-label col-sm-2"></label>
+          <div class="col-sm-6">
+            <button class='btn btn-danger'  [routerLink]='["/"]'>Cancel</button>
+            <button class='btn btn-success' [disabled]='!recordForm.valid'>Create</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </fieldset>
+</section>
